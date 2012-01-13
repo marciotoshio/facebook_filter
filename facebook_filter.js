@@ -1,7 +1,15 @@
 var root = document.querySelector('#home_stream');
 root.addEventListener('DOMNodeInserted', function() { 
-	var authors = document.querySelectorAll('.uiAttachmentDetails a');
-	for (var i = 0; i < authors.length; i++) {
-		authors[i].innerText = '[ changed ]';
+	var stories = document.querySelectorAll('.pvm');
+	for (var i = 0; i < stories.length; i++) {
+		filterByAuthor(stories[i]);
 	}
 });
+
+function filterByAuthor(story) {
+	var filters = ['Some Text to Block', 'Another Text to Block'];
+	var author = story.querySelector('.uiAttachmentDetails a');
+	if(author != null && filters.indexOf(author.innerText) > -1) {
+		story.innerText = "[ FILTERED ]";
+	}
+}
