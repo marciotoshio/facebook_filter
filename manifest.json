@@ -2,8 +2,21 @@
 	"name": "Facebook Filter",
 	"version": "0.1.0",
 	"description": "Filter facebook stories.",
-	"content_scripts": [ { "js": [ "facebook_filter.js" ], "matches": [ "http://www.facebook.com/*", "https://www.facebook.com/*"] } ],
-	"permissions": [ "http://www.facebook.com/", "https://www.facebook.com/"] ,
+	"content_scripts": [
+		{ "js": [ "facebook_filter.js" ], "matches": [ "http://www.facebook.com/*", "https://www.facebook.com/*"] }
+	],
+	"permissions": [ 
+		"http://www.facebook.com/", 
+		"https://www.facebook.com/"
+	] ,
 	"options_page": "options.html",
-	"background_page": "background.html"
+	"background_page": "background.html",
+	"icons": { 
+		"16": "icon_16.png", 
+		"48": "icon_48.png", 
+		"128": "icon_128.png" 
+	},
+	"browser_action": {
+		"default_icon": "icon_19.png"
+	}
 }
