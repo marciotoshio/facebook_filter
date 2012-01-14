@@ -1,25 +1,39 @@
-var root = document.querySelector('#home_stream');
-root.addEventListener('DOMNodeInserted', function() { 
-	var stories = document.querySelectorAll('.pvm');
-	for (var i = 0; i < stories.length; i++) {
-		filterByAuthor(stories[i]);
-	}
+var FacebookFilter = FacebookFilter || {};
+FacebookFilter.Options = FacebookFilter.Options || {};
+
+FacebookFilter.filteredStories = new Array();
+FacebookFilter.theOptions = {};
+
+//Start
+chrome.extension.sendRequest({method: 'getOptions'}, function(response) {
+	FacebookFilter.theOptions = response;
+	var root = document.querySelector('#home_stream');
+	root.addEventListener('DOMNodeInserted', function() { 
+		var stories = document.querySelectorAll('.pvm');
+		for (var i = 0; i < stories.length; i++) {
+			if(FacebookFilter.filteredStories.indexOf(stories[i].id) < 0) {
+				FacebookFilter.byAuthor(stories[i]);
+			}
+		}
+	});
 });
 
-var filteredStories = new Array();
-
-function filterByAuthor(story) {
-	var filters = ['Altas Risadas'];
+FacebookFilter.byAuthor = function (story) {
+	var filtersKeys = FacebookFilter.theOptions.authorKeys;
 	var author = story.querySelector('.uiAttachmentDetails a');
-	if(author != null && filters.indexOf(author.innerText) > -1 && filteredStories.indexOf(story.id) < 0) {
-		filteredStories.push(story.id);
-		story.querySelector('.storyHighlightIndicatorWrapper').style.display = 'none';
-		story.querySelector('.storyContent').style.display = 'none';
-		story.appendChild(filteredTemplate());
+	if(author != null && filtersKeys.indexOf(author.innerText) > -1) {
+		FacebookFilter.filter(story)
 	}
 }
 
-function filteredTemplate() {
+FacebookFilter.filter = function(story) {
+	FacebookFilter.filteredStories.push(story.id);
+	story.querySelector('.storyHighlightIndicatorWrapper').style.display = 'none';
+	story.querySelector('.storyContent').style.display = 'none';
+	story.appendChild(FacebookFilter.template());
+}
+
+FacebookFilter.template = function () {
 	var div = document.createElement('div');
 	div.style.textAlign = 'center';
 	div.style.padding = '5px';

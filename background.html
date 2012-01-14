@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script type="text/javascript" src="facebook_options.js"></script>
+		<script type="text/javascript">
+			chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
+				if (request.method == "getOptions")
+					sendResponse(FacebookFilter.Options.load());
+				else
+					sendResponse({});
+			});
+		</script>
+	</head>
+	<body></body>
+</html>

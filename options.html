@@ -2,18 +2,9 @@
 <html>
 	<head>
 		<link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css">
-		<script type="text/javascript">
-			function loadOptions() {
-				document.getElementById('author_keys').value = localStorage['facebookFilter_authorKeys'];
-			}
-			
-			function submitOptions() {
-				localStorage['facebookFilter_authorKeys'] = document.getElementById('author_keys').value;
-				return false;
-			}
-		</script>
+		<script type="text/javascript" src="facebook_options.js"></script>
 	</head>
-	<body onload="loadOptions()">
+	<body onload="FacebookFilter.Options.init()">
 		<h1>Facebook Filter Options</h1>
 		<form class="form-stacked">
 			<fieldset>
@@ -22,7 +13,7 @@
 				<input id="author_keys" type="text" class="span12" />
 			</fieldset>
 			<div class="actions">
-				<input type="button" value="save" class="btn primary" onclick="submitOptions()" />
+				<input type="button" value="save" class="btn primary" onclick="FacebookFilter.Options.submit()" />
 			</div>
 		</form>
 	</body>
