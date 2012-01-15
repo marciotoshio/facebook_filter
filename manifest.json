@@ -1,6 +1,6 @@
 {
 	"name": "Facebook Filter",
-	"version": "0.1.0",
+	"version": "0.2.0",
 	"description": "Filter facebook stories.",
 	"content_scripts": [
 		{ "js": [ "facebook_filter.js" ], "matches": [ "http://www.facebook.com/*", "https://www.facebook.com/*"] }
