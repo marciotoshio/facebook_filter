@@ -1,6 +1,18 @@
 var FacebookFilter = FacebookFilter || {};
 FacebookFilter.Options = FacebookFilter.Options || {};
 
+String.prototype.containsExactly = function(value) {
+	var a1 = this.split(' ');
+	var a2 = value.split(' ');
+	for(var i = 0, j = 0; i < a1.length; i++) { 
+		if(a1[i] === a2[j]) { 
+			j++; 
+			if(j == a2.length)  return true;
+		}
+	} 
+	return false
+}
+
 FacebookFilter.filteredStories = new Array();
 FacebookFilter.theOptions = {};
 
@@ -13,16 +25,29 @@ chrome.extension.sendRequest({method: 'getOptions'}, function(response) {
 		for (var i = 0; i < stories.length; i++) {
 			if(FacebookFilter.filteredStories.indexOf(stories[i].id) < 0) {
 				FacebookFilter.byAuthor(stories[i]);
+				FacebookFilter.byMessageBody(stories[i]);
 			}
 		}
 	});
 });
 
 FacebookFilter.byAuthor = function (story) {
-	var filtersKeys = FacebookFilter.theOptions.authorKeys;
+	var filterKeys = FacebookFilter.theOptions.authorKeys;
 	var contentContainer = story.querySelector('.uiAttachmentDetails a');
-	if(contentContainer != null && filtersKeys.indexOf(contentContainer.innerText) > -1) {
+	if(contentContainer != null && filterKeys.indexOf(contentContainer.innerText) > -1) {
 		FacebookFilter.filter(story)
+	}
+}
+
+FacebookFilter.byMessageBody = function (story) {
+	var filterKeys = FacebookFilter.theOptions.messageBodyKeys;
+	var contentContainer = story.querySelector('.messageBody');
+	if(contentContainer != null) {
+		for(var i = 0; i < filterKeys.length; i++) {
+			if(contentContainer.innerText.containsExactly(filterKeys[i])) {
+				FacebookFilter.filter(story)
+			}
+		}
 	}
 }
 
