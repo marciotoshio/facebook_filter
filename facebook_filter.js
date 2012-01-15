@@ -31,6 +31,7 @@ FacebookFilter.filter = function(story) {
 	story.querySelector('.storyHighlightIndicatorWrapper').style.display = 'none';
 	story.querySelector('.storyContent').style.display = 'none';
 	story.appendChild(FacebookFilter.template());
+	chrome.extension.sendRequest({method: 'setBadgeText', value: FacebookFilter.filteredStories.length});
 }
 
 FacebookFilter.template = function () {
