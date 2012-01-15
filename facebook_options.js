@@ -12,6 +12,7 @@ FacebookFilter.Options.submit = function () {
 	options.authorKeys = document.getElementById('author_keys').value.split(',');
 	options.messageBodyKeys = document.getElementById('message_body_keys').value.split(',');
 	FacebookFilter.Options.save(options);
+	FacebookFilter.Options.showSuccess();
 	return false;
 }
 
@@ -27,4 +28,13 @@ FacebookFilter.Options.load = function () {
 
 FacebookFilter.Options.save = function (options) {
 	localStorage['facebookFilterOptions'] = JSON.stringify(options);
+}
+
+FacebookFilter.Options.showSuccess = function () {
+	var message = document.querySelector('#message');
+	message.style.display = 'block';
+	setTimeout(function() {
+		message.style.display = 'none';
+	}, 5000);
+	
 }

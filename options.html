@@ -2,24 +2,79 @@
 <html>
 	<head>
 		<link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css">
+		<style type="text/css">
+			/* Override some defaults */
+			html, body {
+				background-color: #eee;
+			}
+			.container > footer p {
+				text-align: center; /* center align it with the container */
+			}
+			.container {
+				width: 820px; /* downsize our container to make the content feel a bit tighter and more cohesive. NOTE: this removes two full columns from the grid, meaning you only go to 14 columns and not 16. */
+			}
+
+			/* The white background content wrapper */
+			.content {
+				background-color: #fff;
+				padding: 20px;
+				margin: 0 -20px; /* negative indent the amount of the padding to maintain the grid system */
+				-webkit-border-radius: 0 0 6px 6px;
+				-moz-border-radius: 0 0 6px 6px;
+				border-radius: 0 0 6px 6px;
+				-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+				-moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+				box-shadow: 0 1px 2px rgba(0,0,0,.15);
+			}
+
+			/* Page header tweaks */
+			.page-header {
+				background-color: #f5f5f5;
+				padding: 20px 20px 10px;
+				margin: -20px -20px 20px;
+			}
+			
+			#message {
+				margin-left: 20px;
+			}
+			
+			.form-stacked .actions {
+				margin-left: 0;
+			}
+		</style>
 		<script type="text/javascript" src="facebook_options.js"></script>
 	</head>
 	<body onload="FacebookFilter.Options.init()">
-		<h1>Facebook Filter Options</h1>
-		<form class="form-stacked">
-			<fieldset>
-				<legend>Filter message body</legend>
-				<label for="message_body_keys">Message body keys:</label>
-				<input id="message_body_keys" type="text" class="span12" />
-			</fieldset>
-			<fieldset>
-				<legend>Filter author</legend>
-				<label for="author_keys">Author keys:</label>
-				<input id="author_keys" type="text" class="span12" />
-			</fieldset>
-			<div class="actions">
-				<input type="button" value="save" class="btn primary" onclick="FacebookFilter.Options.submit()" />
+		<div class="container">
+			<div class="content">
+				<div class="page-header">
+					<h1>Facebook Filter Options</h1>
+				</div>
+				<div class="row">
+					<div id="message" class="alert-message success" style="display: none;">
+						<p><strong>Success!</strong> Options saved successfully.</p>
+					</div>
+				</div>
+				<div class="row">
+					<form class="form-stacked">
+						<fieldset>
+							<legend>Filter message body</legend>
+							<label for="message_body_keys">Message body keys:</label>
+							<input id="message_body_keys" type="text" class="span12" />
+							<span class="help-block">Comma separated values, e.g. "some text,another text"</span>
+						</fieldset>
+						<fieldset>
+							<legend>Filter author</legend>
+							<label for="author_keys">Author keys:</label>
+							<input id="author_keys" type="text" class="span12" />
+							<span class="help-block">Comma separated values, e.g. "some text,another text"</span>
+						</fieldset>
+						<div class="actions">
+							<input type="button" value="save" class="btn primary" onclick="FacebookFilter.Options.submit()" />
+						</div>
+					</form>
+				</div>
 			</div>
-		</form>
+		</div>
 	</body>
 </html>
