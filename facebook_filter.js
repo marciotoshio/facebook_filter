@@ -20,8 +20,8 @@ chrome.extension.sendRequest({method: 'getOptions'}, function(response) {
 
 FacebookFilter.byAuthor = function (story) {
 	var filtersKeys = FacebookFilter.theOptions.authorKeys;
-	var author = story.querySelector('.uiAttachmentDetails a');
-	if(author != null && filtersKeys.indexOf(author.innerText) > -1) {
+	var contentContainer = story.querySelector('.uiAttachmentDetails a');
+	if(contentContainer != null && filtersKeys.indexOf(contentContainer.innerText) > -1) {
 		FacebookFilter.filter(story)
 	}
 }
