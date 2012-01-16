@@ -3,15 +3,34 @@
 	<head>
 		<script type="text/javascript" src="facebook_options.js"></script>
 		<script type="text/javascript">
-			chrome.browserAction.setBadgeBackgroundColor({"color": [53,79,130,255]});
-			chrome.browserAction.setBadgeText({"text": "0"});
+			//Badge
+			chrome.browserAction.setBadgeBackgroundColor({'color': [53,79,130,255]});
+			chrome.browserAction.setBadgeText({'text': '0'});
 		
+			//Context menu
+			chrome.contextMenus.create({
+				'title': 'Filter by message body with: %s',
+				'contexts': ['selection'],
+				'onclick': function (info) {
+					console.log('selected text for message body: ' + info.selectionText);
+				}
+			});
+			
+			chrome.contextMenus.create({
+				'title': 'Filter by author with: %s',
+				'contexts': ['selection'],
+				'onclick': function (info) {
+					console.log('selected text for author: ' + info.selectionText);
+				}
+			});
+			
+			//Extension and Content_Script communication
 			chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
-				if (request.method == "getOptions") {
+				if (request.method == 'getOptions') {
 					sendResponse(FacebookFilter.Options.load());
 				}
-				else if (request.method == "setBadgeText") {
-					chrome.browserAction.setBadgeText({"text": request.value.toString()});
+				else if (request.method == 'setBadgeText') {
+					chrome.browserAction.setBadgeText({'text': request.value.toString()});
 				}
 				else {
 					sendResponse({});

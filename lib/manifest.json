@@ -7,7 +7,8 @@
 	],
 	"permissions": [ 
 		"http://www.facebook.com/", 
-		"https://www.facebook.com/"
+		"https://www.facebook.com/",
+		"contextMenus"
 	] ,
 	"options_page": "options.html",
 	"background_page": "background.html",
