@@ -44,7 +44,7 @@
 		</style>
 		<script type="text/javascript" src="facebook_options.js"></script>
 	</head>
-	<body onload="FacebookFilter.Options.init()">
+	<body onload="new FacebookFilter.Options().init()">
 		<div class="container">
 			<div class="content">
 				<div class="page-header">
@@ -70,7 +70,7 @@
 							<span class="help-block">Comma separated values, e.g. "some text,another text"</span>
 						</fieldset>
 						<div class="actions">
-							<input type="button" value="save" class="btn primary" onclick="FacebookFilter.Options.submit()" />
+							<input type="button" value="save" class="btn primary" onclick="new FacebookFilter.Options().submit()" />
 						</div>
 					</form>
 				</div>

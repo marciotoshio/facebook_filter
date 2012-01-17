@@ -7,12 +7,15 @@
 			chrome.browserAction.setBadgeBackgroundColor({'color': [53,79,130,255]});
 			chrome.browserAction.setBadgeText({'text': '0'});
 		
+			//Options
+			var options = new FacebookFilter.Options();
+		
 			//Context menu
 			chrome.contextMenus.create({
 				'title': 'Filter by message body with: %s',
 				'contexts': ['selection'],
 				'onclick': function (info) {
-					console.log('selected text for message body: ' + info.selectionText);
+					options.addMessageBodyKey(info.selectionText);
 				}
 			});
 			
@@ -20,14 +23,14 @@
 				'title': 'Filter by author with: %s',
 				'contexts': ['selection'],
 				'onclick': function (info) {
-					console.log('selected text for author: ' + info.selectionText);
+					options.addAuthorKey(info.selectionText);
 				}
 			});
 			
 			//Extension and Content_Script communication
 			chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
 				if (request.method == 'getOptions') {
-					sendResponse(FacebookFilter.Options.load());
+					sendResponse(options.getOptions());
 				}
 				else if (request.method == 'setBadgeText') {
 					chrome.browserAction.setBadgeText({'text': request.value.toString()});
