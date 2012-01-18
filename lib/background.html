@@ -27,6 +27,14 @@
 				}
 			});
 			
+			chrome.contextMenus.create({
+				'title': 'Filter by attachment with: %s',
+				'contexts': ['selection'],
+				'onclick': function (info) {
+					options.addAttachmentKey(info.selectionText);
+				}
+			});
+			
 			//Extension and Content_Script communication
 			chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
 				if (request.method == 'getOptions') {
