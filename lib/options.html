@@ -2,46 +2,7 @@
 <html>
 	<head>
 		<link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css">
-		<style type="text/css">
-			/* Override some defaults */
-			html, body {
-				background-color: #eee;
-			}
-			.container > footer p {
-				text-align: center; /* center align it with the container */
-			}
-			.container {
-				width: 820px; /* downsize our container to make the content feel a bit tighter and more cohesive. NOTE: this removes two full columns from the grid, meaning you only go to 14 columns and not 16. */
-			}
-
-			/* The white background content wrapper */
-			.content {
-				background-color: #fff;
-				padding: 20px;
-				margin: 0 -20px; /* negative indent the amount of the padding to maintain the grid system */
-				-webkit-border-radius: 0 0 6px 6px;
-				-moz-border-radius: 0 0 6px 6px;
-				border-radius: 0 0 6px 6px;
-				-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
-				-moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
-				box-shadow: 0 1px 2px rgba(0,0,0,.15);
-			}
-
-			/* Page header tweaks */
-			.page-header {
-				background-color: #f5f5f5;
-				padding: 20px 20px 10px;
-				margin: -20px -20px 20px;
-			}
-			
-			#message {
-				margin-left: 20px;
-			}
-			
-			.form-stacked .actions {
-				margin-left: 0;
-			}
-		</style>
+		<link rel="stylesheet" type="text/css"  href="options.css">
 		<script type="text/javascript" src="facebook_options.js"></script>
 	</head>
 	<body onload="new FacebookFilter.Options().init()">
@@ -51,35 +12,49 @@
 					<h1>Facebook Filter Options</h1>
 				</div>
 				<div class="row">
-					<div id="message" class="alert-message success" style="display: none;">
-						<p><strong>Success!</strong> Options saved successfully.</p>
+					<div id="message" class="alert-message info">
+						<p>After making changes on this page don't forget to refresh your facebook page!</p>
 					</div>
 				</div>
-				<div class="row">
+				
 					<form class="form-stacked">
 						<fieldset>
 							<legend>Filter message body</legend>
-							<label for="message_body_keys">Message body keys:</label>
-							<input id="message_body_keys" type="text" class="span12" />
-							<span class="help-block">Comma separated values, e.g. "some text,another text"</span>
+							<div class="row">
+								<div class="span11">
+									<label for="message_body_new_filter">New message body filter:</label>
+									<input id="message_body_new_filter" type="text" class="span11" name="message_body_new_filter"/>
+								</div>
+								<div class="span2 action"><input type="button" value="add" class="btn primary" onclick="new FacebookFilter.Options().addMessageBodyKey(message_body_new_filter.value)" /></div>
+							</div>
+							<div id="message_body_filters"></div>
 						</fieldset>
+						
 						<fieldset>
 							<legend>Filter attachment</legend>
-							<label for="attachment_keys">Attachment keys:</label>
-							<input id="attachment_keys" type="text" class="span12" />
-							<span class="help-block">Comma separated values, e.g. "some text,another text"</span>
+							<div class="row">
+								<div class="span11">
+									<label for="attachment_new_filter">New attachment filter:</label>
+									<input id="attachment_new_filter" type="text" class="span11" name="teste"/>
+								</div>
+								<div class="span2 action"><input type="button" value="add" class="btn primary" onclick="new FacebookFilter.Options().addAttachmentKey(attachment_new_filter.value)" /></div>
+							</div>
+							<div id="attachment_filters"></div>
 						</fieldset>
+
 						<fieldset>
 							<legend>Filter author</legend>
-							<label for="author_keys">Author keys:</label>
-							<input id="author_keys" type="text" class="span12" />
-							<span class="help-block">Comma separated values, e.g. "some text,another text"</span>
+							<div class="row">
+								<div class="span11">
+									<label for="author_new_filter">New author filter:</label>
+									<input id="author_new_filter" type="text" class="span11" name="author_new_filter" />
+								</div>
+								<div class="span2 action"><input type="button" value="add" class="btn primary" onclick="new FacebookFilter.Options().addAuthorKey(author_new_filter.value)" /></div>
+							</div>
+							<div id="author_filters"></div>
 						</fieldset>
-						<div class="actions">
-							<input type="button" value="save" class="btn primary" onclick="new FacebookFilter.Options().submit()" />
-						</div>
 					</form>
-				</div>
+				
 			</div>
 		</div>
 	</body>
