@@ -12,26 +12,10 @@
 		
 			//Context menu
 			chrome.contextMenus.create({
-				'title': 'Filter by message body with: %s',
+				'title': 'Filter with: %s',
 				'contexts': ['selection'],
 				'onclick': function (info) {
-					options.addMessageBodyKey(info.selectionText);
-				}
-			});
-			
-			chrome.contextMenus.create({
-				'title': 'Filter by author with: %s',
-				'contexts': ['selection'],
-				'onclick': function (info) {
-					options.addAuthorKey(info.selectionText);
-				}
-			});
-			
-			chrome.contextMenus.create({
-				'title': 'Filter by attachment with: %s',
-				'contexts': ['selection'],
-				'onclick': function (info) {
-					options.addAttachmentKey(info.selectionText);
+					options.addKey(info.selectionText);
 				}
 			});
 			
