@@ -19,39 +19,15 @@
 				
 					<form class="form-stacked">
 						<fieldset>
-							<legend>Filter message body</legend>
+							<legend>Filter keys</legend>
 							<div class="row">
 								<div class="span11">
-									<label for="message_body_new_filter">New message body filter:</label>
-									<input id="message_body_new_filter" type="text" class="span11" name="message_body_new_filter"/>
+									<label for="new_key">New filter key:</label>
+									<input id="new_key" type="text" class="span11" name="new_key"/>
 								</div>
-								<div class="span2 action"><input type="button" value="add" class="btn primary" onclick="new FacebookFilter.Options().addMessageBodyKey(message_body_new_filter.value)" /></div>
+								<div class="span2 action"><input type="button" value="add" class="btn primary" onclick="new FacebookFilter.Options().addKey(new_key.value)" /></div>
 							</div>
-							<div id="message_body_filters"></div>
-						</fieldset>
-						
-						<fieldset>
-							<legend>Filter attachment</legend>
-							<div class="row">
-								<div class="span11">
-									<label for="attachment_new_filter">New attachment filter:</label>
-									<input id="attachment_new_filter" type="text" class="span11" name="teste"/>
-								</div>
-								<div class="span2 action"><input type="button" value="add" class="btn primary" onclick="new FacebookFilter.Options().addAttachmentKey(attachment_new_filter.value)" /></div>
-							</div>
-							<div id="attachment_filters"></div>
-						</fieldset>
-
-						<fieldset>
-							<legend>Filter author</legend>
-							<div class="row">
-								<div class="span11">
-									<label for="author_new_filter">New author filter:</label>
-									<input id="author_new_filter" type="text" class="span11" name="author_new_filter" />
-								</div>
-								<div class="span2 action"><input type="button" value="add" class="btn primary" onclick="new FacebookFilter.Options().addAuthorKey(author_new_filter.value)" /></div>
-							</div>
-							<div id="author_filters"></div>
+							<div id="filter_keys"></div>
 						</fieldset>
 					</form>
 				
