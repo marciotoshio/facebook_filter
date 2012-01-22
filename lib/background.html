@@ -15,7 +15,11 @@
 				'title': chrome.i18n.getMessage('contextMenu'),
 				'contexts': ['selection'],
 				'onclick': function (info) {
-					options.addKey(info.selectionText);
+					var key = info.selectionText;
+					options.addKey(key);
+					chrome.tabs.getSelected(null, function(tab) {
+						chrome.tabs.sendRequest(tab.id, {filterKey: key});
+					});
 				}
 			});
 			
