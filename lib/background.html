@@ -12,7 +12,7 @@
 		
 			//Context menu
 			chrome.contextMenus.create({
-				'title': 'Filter with: %s',
+				'title': chrome.i18n.getMessage('contextMenu'),
 				'contexts': ['selection'],
 				'onclick': function (info) {
 					options.addKey(info.selectionText);

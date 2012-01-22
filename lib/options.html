@@ -9,23 +9,23 @@
 		<div class="container">
 			<div class="content">
 				<div class="page-header">
-					<h1>Facebook Filter Options</h1>
+					<h1 id="title">Facebook Filter Options</h1>
 				</div>
 				<div class="row">
 					<div id="message" class="alert-message info">
-						<p>After making changes on this page don't forget to refresh your facebook page!</p>
+						<p id="messageText">After making changes on this page don't forget to refresh your facebook page!</p>
 					</div>
 				</div>
 				
 					<form class="form-stacked">
 						<fieldset>
-							<legend>Filter keys</legend>
+							<legend id="legend">Filter keys</legend>
 							<div class="row">
 								<div class="span11">
-									<label for="new_key">New filter key:</label>
+									<label for="new_key" id="newKeyLabel">New filter key:</label>
 									<input id="new_key" type="text" class="span11" name="new_key"/>
 								</div>
-								<div class="span2 action"><input type="button" value="add" class="btn primary" onclick="new FacebookFilter.Options().addKey(new_key.value)" /></div>
+								<div class="span2 action"><input id="addButton" type="button" value="add" class="btn primary" onclick="new FacebookFilter.Options().addKey(new_key.value)" /></div>
 							</div>
 							<div id="filter_keys"></div>
 						</fieldset>

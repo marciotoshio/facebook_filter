@@ -1,0 +1,33 @@
+﻿{
+	"messageToUser": {
+		"message": "Este conteúdo foi filtrado pelo Facebook Filter por conter: \"$filterKey$\".  Para visualizar clique aqui.",
+		"placeholders": {
+			"filterKey": {
+				"content": "$1"
+			}
+		}
+	},
+	
+	"contextMenu": {
+		"message": "Filtrar com: %s"
+	},
+	
+	"optionsRemoveFilterTitle": {
+		"message": "remover filtro"
+	},
+	"optionsTitle": {
+		"message": "Opções do Facebook Filter"
+	},
+	"optionsMessageText": {
+		"message": "Após fazer mudanças nesta página, não se esqueça de atualizar sua página do facebook!"
+	},
+	"optionsLegend": {
+		"message": "Palavras chave para o filtro"
+	},
+	"optionsNewKeyLabel": {
+		"message": "Nova palavra chave:"
+	},
+	"optionsAddButton": {
+		"message": "adicionar"
+	}
+}
