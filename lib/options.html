@@ -4,8 +4,9 @@
 		<link rel="stylesheet" href="bootstrap.min.css">
 		<link rel="stylesheet" type="text/css"  href="options.css">
 		<script type="text/javascript" src="facebook_options.js"></script>
+    <script type="text/javascript" src="facebook_options_init.js"></script>
 	</head>
-	<body onload="new FacebookFilter.Options().init()">
+	<body>
 		<div class="container">
 			<div class="content">
 				<div class="page-header">
@@ -16,7 +17,7 @@
 						<p id="messageText">After making changes on this page don't forget to refresh your facebook page!</p>
 					</div>
 				</div>
-				
+
 					<form class="form-stacked">
 						<fieldset>
 							<legend id="legend">Filter keys</legend>
@@ -25,12 +26,12 @@
 									<label for="new_key" id="newKeyLabel">New filter key:</label>
 									<input id="new_key" type="text" class="span10" name="new_key"/>
 								</div>
-								<div class="span2 action"><input id="addButton" type="button" value="add" class="btn primary" onclick="new FacebookFilter.Options().addKey(new_key.value)" /></div>
+								<div class="span2 action"><input id="addButton" type="button" value="add" class="btn primary" /></div>
 							</div>
 							<div id="filter_keys"></div>
 						</fieldset>
 					</form>
-				
+
 			</div>
 		</div>
 	</body>
