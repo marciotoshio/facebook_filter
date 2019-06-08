@@ -1,23 +1,23 @@
 {
 	"manifest_version": 2,
 	"name": "Facebook Filter",
-	"version": "1.2.6",
+	"version": "1.3.0",
 	"description": "Filter facebook stories.",
 	"content_scripts": [
 		{ "js": [ "facebook_filter.js" ], "matches": [ "http://www.facebook.com/*", "https://www.facebook.com/*"] }
 	],
-	"permissions": [ 
-		"http://www.facebook.com/", 
+	"permissions": [
+		"http://www.facebook.com/",
 		"https://www.facebook.com/",
 		"contextMenus",
 		"tabs"
 	] ,
 	"options_page": "options.html",
 	"background": { "page": "background.html" },
-	"icons": { 
-		"16": "images/icon_16.png", 
-		"48": "images/icon_48.png", 
-		"128": "images/icon_128.png" 
+	"icons": {
+		"16": "images/icon_16.png",
+		"48": "images/icon_48.png",
+		"128": "images/icon_128.png"
 	},
 	"browser_action": {
 		"default_icon": "images/icon_19.png"
